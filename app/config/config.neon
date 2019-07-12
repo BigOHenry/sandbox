@@ -1,14 +1,15 @@
-#
-# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
-# https://nette.org/security-warning
-#
+extensions:
+	apiRouter: Ublaboo\ApiRouter\DI\ApiRouterExtension
+
+
 parameters:
 
 
 application:
 	errorPresenter: Error
+	scanDirs: false
 	mapping:
-		*: App\*Module\Presenters\*Presenter
+		*: App\Controllers\*Controller
 
 
 session:
@@ -16,15 +17,10 @@ session:
 
 
 services:
-	- App\Model\UserManager
-	- App\Forms\FormFactory
-	- App\Forms\SignInFormFactory
-	- App\Forms\SignUpFormFactory
-	router: App\RouterFactory::createRouter
+	- App\Http\ApiResponseFormatter
+	- App\Routing\RouterFactory
+	router: @App\Routing\RouterFactory::create
 
-apiDocu:
-	apiDir: "%wwwDir%/api"
-
-extensions:
-    apiRouter: Ublaboo\ApiRouter\DI\ApiRouterExtension
-    apiDocu: Ublaboo\ApiDocu\DI\ApiDocuExtension
+	# Api endpoints
+	#
+	- App\Controllers\LoginController
