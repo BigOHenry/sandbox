@@ -10,9 +10,9 @@ CREATE TABLE test_table
     bool_varchar CHAR        DEFAULT '0'::BPCHAR NOT NULL
 );
 
-ALTER TABLE test_table
-    OWNER TO flexii;
-
 CREATE UNIQUE INDEX test_table_id_uindex
     ON test_table (id);
 
+INSERT INTO test_table (int, string, bool, bool_varchar) VALUES (1, '1', true, 'true');
+INSERT INTO test_table (int, string, bool, bool_varchar) VALUES (0, '0', false, 'false');
+INSERT INTO test_table (int, string, bool, bool_varchar) VALUES (null, null, false, 'false');
