@@ -1,15 +1,14 @@
 extensions:
-	apiRouter: Ublaboo\ApiRouter\DI\ApiRouterExtension
-
+    dibi: Dibi\Bridges\Nette\DibiExtension22
 
 parameters:
 
 
 application:
 	errorPresenter: Error
-	scanDirs: false
+#	catchExceptions: true
 	mapping:
-		*: App\Controllers\*Controller
+		*: App\*Module\Presenters\*Presenter
 
 
 session:
@@ -17,10 +16,6 @@ session:
 
 
 services:
-	- App\Http\ApiResponseFormatter
-	- App\Routing\RouterFactory
-	router: @App\Routing\RouterFactory::create
+	- App\Components\UserDatagrid\IUserDatagridFactory
 
-	# Api endpoints
-	#
-	- App\Controllers\LoginController
+	router: App\RouterFactory::createRouter

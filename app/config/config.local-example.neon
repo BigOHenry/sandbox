@@ -1,0 +1,11 @@
+parameters:
+
+
+dibi:
+    driver: postgresql
+    database: 127.0.0.1:1521/XE
+    username: sandbox
+    password: xxx
+    charset: utf8
+    onConnect: ["ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD HH24:MI:SS'","ALTER SESSION SET nls_sort=Latin_AI","ALTER SESSION SET nls_comp=linguistic"]
+    lazy: false
